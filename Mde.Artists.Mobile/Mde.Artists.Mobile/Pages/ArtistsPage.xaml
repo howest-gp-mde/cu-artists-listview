@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:Mde.Artists.Mobile.ViewModels" xmlns:entities="clr-namespace:Mde.Artists.Mobile.Domain.Entities"
+             x:DataType="viewmodels:ArtistsViewModel"
+             x:Class="Mde.Artists.Mobile.Pages.ArtistsPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Vlaamse Artiesten"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding Artists}"
+                      HasUnevenRows="True"
+                      ItemTapped="ListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="entities:Artist">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Image
+                                    HeightRequest="100"
+                                    WidthRequest="100"
+                                    Aspect="AspectFill"
+                                    Source="{Binding ImageUrl}" />
+                                <Label VerticalOptions="Center" 
+                                       FontSize="26"
+                                       Text="{Binding Name}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

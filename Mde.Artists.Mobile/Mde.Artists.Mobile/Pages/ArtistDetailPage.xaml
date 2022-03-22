@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:Mde.Artists.Mobile.ViewModels" 
+             xmlns:entities="clr-namespace:Mde.Artists.Mobile.Domain.Entities"
+             x:DataType="viewmodels:ArtistDetailViewModel"
+             x:Class="Mde.Artists.Mobile.Pages.ArtistDetailPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="{Binding ArtistImage}" 
+                   HeightRequest="300" 
+                   WidthRequest="300" 
+                   Aspect="AspectFill" />
+            <Label Text="{Binding ArtistName}" FontSize="22" FontAttributes="Bold" />
+            <ListView ItemsSource="{Binding Songs}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="entities:Song">
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Title}" VerticalOptions="Center" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
